@@ -5,6 +5,16 @@
   </p>
 
   <p>
+  <strong>Author:</strong>
+  <% if post.author %>
+    <%= post.author.name %>
+  <% else %>
+    Unknown author
+  <% end %>
+</p>
+
+
+  <p>
     <strong>Description:</strong>
     <%= post.description %>
   </p>

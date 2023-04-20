@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :authenticate_author!
+  before_action :authenticate_author!, except: [:index]
 
   # GET /posts or /posts.json
-  def index
-      @posts = Post.all.with_rich_text_description
+  def index 
+      @posts = Post.all.with_rich_text_description.order(created_at: :desc)
+      
   end
 
   # GET /posts/1 or /posts/1.json
@@ -23,6 +24,7 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params)
+    @post.author = current_author
 
     respond_to do |format|
       if @post.save
@@ -66,6 +68,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :description)
+      params.require(:post).permit(:title, :description, :name)
     end
 end
