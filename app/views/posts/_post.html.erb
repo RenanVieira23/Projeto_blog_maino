@@ -6,7 +6,7 @@
 
   <p>
   <strong>Author:</strong>
-  <% if post.author %>
+  <% if current_author.present?%>
     <%= post.author.name %>
   <% else %>
     Unknown author

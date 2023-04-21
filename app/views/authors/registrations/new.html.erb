@@ -26,8 +26,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+ <%
+=begin%>
+ <button type="button" class="btn btn-secondary">Secondary</button> 
+<%
+=end%>
+
+  <div class=" btn btn-secondary" >
+    <%= f.submit "Sign up ", :class => "btn btn-secundary" %>
   </div>
 <% end %>
 

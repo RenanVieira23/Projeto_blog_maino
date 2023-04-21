@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
-  before_action :authenticate_author!, except: [:index]
+  before_action :authenticate_author!, except: [:index, :show]
 
   # GET /posts or /posts.json
   def index 
@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @comentarios = @post.comentarios.order(created_at: :desc)
   end
 
   # GET /posts/new
@@ -70,4 +71,5 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :description, :name)
     end
+    
 end

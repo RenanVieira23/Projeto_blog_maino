@@ -74,3 +74,4 @@ end
 gem "devise"
 gem 'bootstrap', '~> 5.3.0.alpha3'
 gem 'jquery-rails'
+gem 'acts_as_commentable'

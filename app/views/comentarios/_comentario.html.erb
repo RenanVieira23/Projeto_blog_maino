@@ -1,0 +1,12 @@
+<div class="comentario-<%= comentario.id%> container"
+style="border: 1px solid black; padding: 1em; margin: 1em">
+<%= comentario.author&.name %><br />
+<span> Posted <%= time_ago_in_words(comentario.created_at)%> </span>
+<%if current_author == comentario.author%>
+<div class="button-group float-end">
+<%= button_to "Delete", [post, comentario], class: "btn btn-danger", method: :delete %>
+<%end%>
+<hr/>
+<%= comentario.body %>
+</div>
+
