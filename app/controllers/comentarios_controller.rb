@@ -19,7 +19,7 @@ end
 
 
      def destroy
-        comentario = @post.comentarios.find(params[id])
+        comentario = @post.comentarios.find(params[:id])
         comentario.destroy
         redirect_to post_path(@post)
  end
