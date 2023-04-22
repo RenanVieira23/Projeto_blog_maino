@@ -6,6 +6,16 @@ style="border: 1px solid black; padding: 1em; margin: 1em">
   <% else %>
     <span>Posted <%= time_ago_in_words(comentario.created_at) %> ago</span>
   <% end %>
+ <% if post.author %>
+  <% if post.author.respond_to?(:signed?) && post.author.signed? %>
+    <%= post.author.name %>
+  <% else %>
+    <%="Unknown author"%>
+  <% end %>
+<% else %>
+  <%="Unknown author"%>
+<% end %>
+
 <%if current_author == comentario.author%>
 <div class="btn-group float-end">
 <%= link_to "Edit", nil, remote: true, class:"btn btn-warning",

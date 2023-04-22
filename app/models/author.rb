@@ -5,5 +5,7 @@ class Author < ApplicationRecord
          :recoverable, :rememberable, :validatable
          has_many :posts, dependent: :destroy
          has_many :coments, dependent: :destroy 
+         has_one_attached :avatar
+
          
 end
