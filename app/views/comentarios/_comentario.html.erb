@@ -1,12 +1,29 @@
 <div class="comentario-<%= comentario.id%> container"
 style="border: 1px solid black; padding: 1em; margin: 1em">
 <%= comentario.author&.name %><br />
-<span> Posted <%= time_ago_in_words(comentario.created_at)%> </span>
+ <% if (comentario.updated_at - comentario.created_at) > 1 %>
+    <span>Edited <%= time_ago_in_words(comentario.updated_at) %> ago</span>
+  <% else %>
+    <span>Posted <%= time_ago_in_words(comentario.created_at) %> ago</span>
+  <% end %>
 <%if current_author == comentario.author%>
-<div class="button-group float-end">
+<div class="btn-group float-end">
+<%= link_to "Edit", nil, remote: true, class:"btn btn-warning",
+data: {
+        controller: "comentarios",
+        action: "comentarios#toggleForm",
+        comentarios_form_param: "edit-form-#{comentario.id}",
+        comentarios_body_param: "comentario-body-#{comentario.id}",
+      } %>
 <%= button_to "Delete", [post, comentario], class: "btn btn-danger", method: :delete %>
-<%end%>
-<hr/>
-<%= comentario.body %>
 </div>
-
+   <div id="edit-form-<%= comentario.id%>" class="d-none">
+      <%= render 'comentarios/form', post: @post,
+       comentario: comentario,
+      submit_label: "Update" %>
+    </div>
+  <% end %>
+ <div id="comentario-body-<%= comentario.id %>">
+    <%= comentario.body %>
+  </div>
+  </div>

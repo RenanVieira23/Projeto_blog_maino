@@ -1,5 +1,5 @@
 class ComentariosController < ApplicationController
-  #  before_action :authenticate_author!
+  before_action :authenticate_author!
     before_action :set_post
 
 
@@ -23,6 +23,18 @@ end
         comentario.destroy
         redirect_to post_path(@post)
  end
+
+ def update
+    @comentario = @post.comentarios.find(params[:id])
+
+    respond_to do |format|
+      if @comentario.update(comentario_params)
+        format.html { redirect_to post_url(@post), notice: 'Comment has been updated' }
+      else
+        format.html { redirect_to post_url(@post), alert: 'Comment was not updated!' }
+      end
+    end
+  end
 
     private
     def set_post
