@@ -1,31 +1,30 @@
 <div class="comentario-<%= comentario.id%> container"
 style="border: 1px solid black; padding: 1em; margin: 1em">
-<%= comentario.author&.name %><br />
- <% if (comentario.updated_at - comentario.created_at) > 1 %>
-    <span>Edited <%= time_ago_in_words(comentario.updated_at) %> ago</span>
-  <% else %>
-    <span>Posted <%= time_ago_in_words(comentario.created_at) %> ago</span>
-  <% end %>
- <% if post.author %>
-  <% if post.author.respond_to?(:signed?) && post.author.signed? %>
-    <%= post.author.name %>
+<% if comentario.author.present? %>
+  <% if author_signed_in? && comentario.author == current_author %>
+    <%= comentario.author.name %>
   <% else %>
     <%="Unknown author"%>
   <% end %>
 <% else %>
   <%="Unknown author"%>
-<% end %>
+<% end %><br />
+ <% if (comentario.updated_at - comentario.created_at) > 1 %>
+    <span>Edited <%= time_ago_in_words(comentario.updated_at) %> ago</span>
+  <% else %>
+    <span>Posted <%= time_ago_in_words(comentario.created_at) %> ago</span>
+  <% end %>
 
 <%if current_author == comentario.author%>
 <div class="btn-group float-end">
-<%= link_to "Edit", nil, remote: true, class:"btn btn-warning",
+<%= link_to "Edit", nil, remote: true, class:"btn btn-outline-dark",
 data: {
         controller: "comentarios",
         action: "comentarios#toggleForm",
         comentarios_form_param: "edit-form-#{comentario.id}",
         comentarios_body_param: "comentario-body-#{comentario.id}",
       } %>
-<%= button_to "Delete", [post, comentario], class: "btn btn-danger", method: :delete %>
+<%= button_to "Delete", [post, comentario], class: "btn btn-outline-success", method: :delete, style: "border-color: #1464A5" %>
 </div>
    <div id="edit-form-<%= comentario.id%>" class="d-none">
       <%= render 'comentarios/form', post: @post,

@@ -24,8 +24,9 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.except(:tags))
     @post.author = current_author
+    create_or_delete_post_tags(@post, params[:post][:tags])
 
     respond_to do |format|
       if @post.save
@@ -40,8 +41,9 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
+    create_or_delete_post_tags(@post, params[:post][:tags])
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params.except(:tags))
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -54,22 +56,33 @@ class PostsController < ApplicationController
   # DELETE /posts/1 or /posts/1.json
   def destroy
     @post.destroy
-
     respond_to do |format|
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
-
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :description, :name)
-    end
-    
+# Use callbacks to share common setup or constraints between actions.
+def set_post
+  @post = Post.find(params[:id])
 end
+
+# Permit only a trusted parameter "white list" through.
+def create_or_delete_post_tags(post, tags)
+  post.taggables.destroy_all
+  tags = tags.present? ? tags.strip.split(",") : []
+  tags.each do |tag|
+    post.tags << Tag.find_or_create_by(name: tag)
+  end
+end
+
+# Use callbacks to share common setup or constraints between actions.
+def set_post
+  @post = Post.find(params[:id])
+end
+
+# Permit only a trusted parameter "white list" through.
+def post_params
+  params.require(:post).permit(:title, :description, :name, :tags)
+end
+end 

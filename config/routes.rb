@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: "posts#index"
+  resources :tags
   devise_for :authors
   resources :posts do
     resources:comentarios
@@ -10,6 +12,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  root to: "posts#index"
+  
 
 end

@@ -77,4 +77,4 @@ gem 'jquery-rails'
 gem 'acts_as_commentable'
 gem 'kaminari'
 gem "aws-sdk-s3", require: false
-
+gem 'sidekiq'

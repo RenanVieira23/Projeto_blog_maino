@@ -1,4 +1,4 @@
-<div id="<%= dom_id post %>">
+<div id="<%= dom_id post %>" class="alert alert-secondary m-5" role="alert">
   <p>
     <strong>Title:</strong>
     <%= post.title %>
@@ -11,12 +11,24 @@
   <% else %>
     Unknown author
   <% end %>
-</p>
-
+  </p>
 
   <p>
     <strong>Description:</strong>
     <%= post.description %>
   </p>
 
+  <p>
+    <strong>Tags:</strong>
+    <% post.tags.each do |tag| %>
+      <%= link_to tag, style:"text-decoration:none", class: "btn btn-sm btn-success mr-2" do %>
+        <%= tag.name.capitalize %>
+      <% end %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= link_to "Show this post", post, class: "btn btn-lg btn-info btn-sm" %>
+  </p>
+  
 </div>
