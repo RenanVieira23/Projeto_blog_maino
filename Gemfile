@@ -78,3 +78,4 @@ gem 'acts_as_commentable'
 gem 'kaminari'
 gem "aws-sdk-s3", require: false
 gem 'sidekiq'
+gem "letter_opener", group: :development
