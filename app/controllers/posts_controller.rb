@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   # GET /posts or /posts.json
   def index 
-      @posts = Post.all.with_rich_text_description.order(created_at: :desc)
+      @posts = Post.all.with_rich_text_description.order(created_at: :desc).page(params[:page])
    
   end
 

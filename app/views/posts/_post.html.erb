@@ -21,14 +21,14 @@
   <p>
     <strong>Tags:</strong>
     <% post.tags.each do |tag| %>
-      <%= link_to tag, style:"text-decoration:none", class: "btn btn-sm btn-success mr-2" do %>
+      <%= link_to tag, style:"text-decoration:none", class: "btn btn-sm btn-dark mr-2" do %>
         <%= tag.name.capitalize %>
       <% end %>
     <% end %>
   </p>
 
   <p>
-    <%= link_to "Show this post", post, class: "btn btn-lg btn-info btn-sm" %>
+    <%= link_to "Show this post", post, class: "btn btn-lg btn-light btn-sm" %>
   </p>
   
 </div>

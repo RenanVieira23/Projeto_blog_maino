@@ -47,16 +47,12 @@
             <a class="nav-link" href="http://localhost:3000/posts/new">Create a new post</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
  <% if author_signed_in? %>
-  <%= button_to "Logout", destroy_author_session_path, method: :delete, class: "btn btn-outline-dark mx-2 bg-danger" %>
+  <%= button_to "Logout", destroy_author_session_path, method: :delete, class: "btn btn-outline-danger btn-ms mx-2" %>
 <% else %>
-  <%= link_to "Login", author_session_path, class: "btn btn-outline-dark mx-2 bg-primary" %>
+  <%= link_to "Login", author_session_path, class: "btn btn-outline-primary btn-ms mx-2 " %>
 <% end %>
   </nav>
   <%= yield %>
