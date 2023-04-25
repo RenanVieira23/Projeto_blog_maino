@@ -1,0 +1,39 @@
+<div class="comentario-<%= comentario.id%> container"
+style="border: 1px solid black; padding: 1em; margin: 1em">
+<% if comentario.author.present? %>
+  <% if author_signed_in? && comentario.author == current_author %>
+    <%= comentario.author.name %>
+  <% else %>
+    <%="Unknown author"%>
+  <% end %>
+<% else %>
+  <%="Unknown author"%>
+<% end %><br />
+ <% if (comentario.updated_at - comentario.created_at) > 1 %>
+    <span><%= t("Edited", time_ago: time_ago_in_words(comentario.updated_at, include_seconds: true)) %></span>
+  <% else %>
+      <span><%= t("Posted", time_ago: time_ago_in_words(comentario.created_at, include_seconds: true)) %></span>
+<% end %>
+
+
+<%if current_author == comentario.author%>
+<div class="btn-group float-end">
+<%= link_to "Edit", nil, remote: true, class:"btn btn-outline-dark",
+data: {
+        controller: "comentarios",
+        action: "comentarios#toggleForm",
+        comentarios_form_param: "edit-form-#{comentario.id}",
+        comentarios_body_param: "comentario-body-#{comentario.id}",
+      } %>
+<%= button_to "Delete", [post, comentario], class: "btn btn-outline-success", method: :delete, style: "border-color: #1464A5" %>
+</div>
+   <div id="edit-form-<%= comentario.id%>" class="d-none">
+      <%= render 'comentarios/form', post: @post,
+       comentario: comentario,
+      submit_label: "Update" %>
+    </div>
+  <% end %>
+ <div id="comentario-body-<%= comentario.id %>">
+    <%= comentario.body %>
+  </div>
+  </div>

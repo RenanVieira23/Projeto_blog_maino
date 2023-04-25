@@ -1,0 +1,7 @@
+<h1>Profile</h1>
+
+<p>Name: <%= @author.name %></p>
+<p>Email: <%= @author.email %></p>
+<p>Joined on: <%= @author.created_at.to_date %></p>
+
+<%= link_to "Edit profile", edit_profile_path %>

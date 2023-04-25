@@ -1,0 +1,61 @@
+<p style="color: #006400;"><%= notice %></p>
+
+<h1>Tags</h1>
+
+<div id="tags">
+  <% @tags.each do |tag| %>
+    <div class="tag-card">
+      <div class="tag-name"><%= tag.name.capitalize %></div>
+      <div class="tag-actions">
+        <%= link_to "Show", tag_path(tag), class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= link_to "New Tag", new_tag_path, class: "btn btn-primary" %>
+
+<style>
+  #tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tag-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    width: 150px;
+  }
+
+  .tag-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .tag-actions {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    background-color: #f5f5f5;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #ccc;
+    color: #fff;
+  }
+</style>

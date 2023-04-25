@@ -1,0 +1,60 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   "true": "foo"
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "hello world"
+  Posts: "Posts"
+  Author: "Author"
+  title: "Title"
+  name: "name"
+  Editing post: "Editing post"
+  Edit account: "Edit account"
+  Edit: "Edit"
+  Delete: "Delete"
+  Next Page: "Next Page"
+  password: "password"
+  current_password: "current password"
+  password_confirmation: "password confirmation"
+  Update: "Update"
+  Forgot your password?: "Forgot your password?"
+  Log in: "Log in"
+  Login: Login
+  Logout: "Logout"
+  Sign up: "Sign up"
+  Home Page: "Home Page"
+  Profile edit: "Profile edit"
+  Create a new post: "Create a new post"
+  Show this post: "show this post"
+  Back to posts: "back to posts"
+  comentario: "Comment"
+  time_ago: "time_ago"
+  Edited: "Edited"
+  Posted: "Posted"

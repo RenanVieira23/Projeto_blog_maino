@@ -1,0 +1,15 @@
+<p class="text-success"><%= notice %></p>
+
+<div class="container">
+  <h1 class="text-center mb-5"><%=t("Posts")%></h1>
+
+  <div class="row">
+    <% @posts.each do |post| %>
+      <div class="col-md-6">
+        <%= render post %>
+      </div>
+    <% end %>
+    <%= paginate @posts %>
+  </div>
+
+  

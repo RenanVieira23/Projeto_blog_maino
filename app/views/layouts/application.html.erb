@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjetoBlogMaino</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    
+    <style>
+      .navbar-brand {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      .nav-link {
+        font-size: 1.2rem;
+      }
+
+
+      .btn-outline-success {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+  
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="http://localhost:3000/"><%=t("Home Page")%></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="http://localhost:3000/authors/edit"><%=t("Profile edit")%></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://localhost:3000/posts/new"><%=t("Create a new post")%></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+ <% if author_signed_in? %>
+  <%= button_to t("Logout"), destroy_author_session_path, method: :delete, class: "btn btn-outline-danger btn-ms mx-2" %>
+<% else %>
+  <%= link_to t("Login"), author_session_path, class: "btn btn-outline-primary btn-ms mx-2 " %>
+<% end %>
+  </nav>
+  <%= yield %>
+  </body>
+</html>

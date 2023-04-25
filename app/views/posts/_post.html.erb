@@ -1,0 +1,34 @@
+<div id="<%= dom_id post %>" class="alert alert-secondary m-5" role="alert">
+  <p>
+    <strong>Title:</strong>
+    <%= post.title %>
+  </p>
+
+  <p>
+  <strong>Author:</strong>
+  <% if current_author.present?%>
+    <%= post.author.name %>
+  <% else %>
+    Unknown author
+  <% end %>
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= post.description %>
+  </p>
+
+  <p>
+    <strong>Tags:</strong>
+    <% post.tags.each do |tag| %>
+      <%= link_to tag, style:"text-decoration:none", class: "btn btn-sm btn-dark mr-2" do %>
+        <%= tag.name.capitalize %>
+      <% end %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= link_to t("Show this post"), post, class: "btn btn-lg btn-light btn-sm" %>
+  </p>
+  
+</div>
