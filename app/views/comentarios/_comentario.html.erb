@@ -10,10 +10,11 @@ style="border: 1px solid black; padding: 1em; margin: 1em">
   <%="Unknown author"%>
 <% end %><br />
  <% if (comentario.updated_at - comentario.created_at) > 1 %>
-    <span>Edited <%= time_ago_in_words(comentario.updated_at) %> ago</span>
+    <span><%= t("Edited", time_ago: time_ago_in_words(comentario.updated_at, include_seconds: true)) %></span>
   <% else %>
-    <span>Posted <%= time_ago_in_words(comentario.created_at) %> ago</span>
-  <% end %>
+      <span><%= t("Posted", time_ago: time_ago_in_words(comentario.created_at, include_seconds: true)) %></span>
+<% end %>
+
 
 <%if current_author == comentario.author%>
 <div class="btn-group float-end">

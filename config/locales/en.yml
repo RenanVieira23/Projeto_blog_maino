@@ -30,4 +30,31 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: Hello world
+  hello: "hello world"
+  Posts: "Posts"
+  Author: "Author"
+  title: "Title"
+  name: "name"
+  Editing post: "Editing post"
+  Edit account: "Edit account"
+  Edit: "Edit"
+  Delete: "Delete"
+  Next Page: "Next Page"
+  password: "password"
+  current_password: "current password"
+  password_confirmation: "password confirmation"
+  Update: "Update"
+  Forgot your password?: "Forgot your password?"
+  Log in: "Log in"
+  Login: Login
+  Logout: "Logout"
+  Sign up: "Sign up"
+  Home Page: "Home Page"
+  Profile edit: "Profile edit"
+  Create a new post: "Create a new post"
+  Show this post: "show this post"
+  Back to posts: "back to posts"
+  comentario: "Comment"
+  time_ago: "time_ago"
+  Edited: "Edited"
+  Posted: "Posted"

@@ -9,7 +9,7 @@
       <li><%= link_to "New Post", new_post_path, class:"dropdown-item" %></li>
       <li><%= link_to "New Project", new_project_path, class:"dropdown-item" if current_author.admin? %></li>
       <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><%= link_to "Edit Account", edit_author_registration_path, class:"dropdown-item" %></li>
+      <li><%= link_to t("Edit Account"), edit_author_registration_path, class:"dropdown-item" %></li>
       <li><hr class="dropdown-divider"></li>
       <li><%= button_to "Sign out", destroy_author_session_path, method: :delete, class:"dropdown-item" %></li>
     </ul>
@@ -19,6 +19,6 @@
     <%= link_to "Sign Up", new_author_registration_path, class:"nav-link" %>
   </li>
   <li class="nav-item">
-    <%= link_to "Login", new_author_session_path, class:'nav-link'%>
+    <%= link_to t("Login"), new_author_session_path, class:'nav-link'%>
   </li>
 <% end %>
